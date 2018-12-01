@@ -21,3 +21,11 @@ class Vendor(object):
     def add_delivery_day(self, weekday):
         """Add delivery day to vendor object."""
         self.delivery_day = weekday
+
+    def add_products(self, product):
+        """Add products to the vendor object."""
+        if isinstance(product, list):
+            for item in product:
+                self.products.append(item)
+        else:
+            self.products.append(product)
