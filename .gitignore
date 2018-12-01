@@ -7,7 +7,7 @@ __pycache__/
 *.so
 
 # Distribution / packaging
-data.json
+data
 .Python
 build/
 develop-eggs/
