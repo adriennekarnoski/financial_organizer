@@ -29,3 +29,14 @@ class Vendor(object):
                 self.products.append(item)
         else:
             self.products.append(product)
+
+    def remove_products(self, product):
+        """Remove products in vendor object."""
+        try:
+            if isinstance(product, list):
+                edited_list = [item for item in self.products if item not in product]
+                self.products = edited_list
+            else:
+                self.products.remove(product)
+        except ValueError:
+            raise ValueError("Not a product in Vendor's list.")

@@ -32,3 +32,26 @@ def test_adding_multiple_products(app_fixture):
     """Test adding a single product to vendor object."""
     app_fixture.add_products(['Pepsi', 'Coke', 'Sprite'])
     assert len(app_fixture.products) == 3
+
+
+def test_remove_single_product(app_fixture):
+    """Test removing a single product from vendor object."""
+    app_fixture.add_products(['Pepsi', 'Coke', 'Sprite'])
+    app_fixture.remove_products('Pepsi')
+    assert len(app_fixture.products) == 2
+    assert 'Pepsi' not in app_fixture.products
+
+
+def test_remove_multiple_products(app_fixture):
+    """Test removing multiple products from vendor object."""
+    app_fixture.add_products(['Pepsi', 'Coke', 'Sprite', 'Smart Water'])
+    app_fixture.remove_products(['Pepsi', 'Sprite'])
+    assert len(app_fixture.products) == 2
+    assert 'Pepsi' not in app_fixture.products
+    assert 'Sprite' not in app_fixture.products
+
+
+def test_error_on_remove_if_not_in_vendor_list(app_fixture):
+    """Test removing product not in vendor's product list raises error."""
+    with pytest.raises(ValueError):
+        app_fixture.remove_products('Pepsi')
